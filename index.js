@@ -28,6 +28,13 @@ let currentFrameY = 0;
 
 let gameFrame = 0;
 const staggerFrame = 5;
+
+let currentPlayerState = 0;
+const dropDown = document.getElementById("animations");
+dropDown.addEventListener("change", (e) => {
+  console.log(e.target.value);
+  currentPlayerState = Number(e.target.value);
+});
 // we will pass multiples of the frames to the drawImage method to animate these.
 const animationLogic = (animationState) => {
   //if seeing that image is blinking , check => are you rendering any empty frames?
@@ -126,7 +133,7 @@ const animate = () => {
   //this is an ANIMATION LOOP -> core concept!
   context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT); //builtin function => takes st and end coordinates and clears those
   drawImage();
-  animationLogic(animationStates[9]);
+  animationLogic(animationStates[currentPlayerState]);
   requestAnimationFrame(animate);
   //this requests the browser to call the animate function before the next repaint.
   //The animate function will continue to be called by the browser
