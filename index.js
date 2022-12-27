@@ -19,8 +19,21 @@ let x = 0;
 const animate = () => {
   //this is an ANIMATION LOOP -> core concept!
   context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT); //builtin function => takes st and end coordinates and clears those
-  context.fillRect(x, 50, 100, 100); //this fills rectangle from start to getElementById
-  x++;
+  context.drawImage(
+    playerImage,
+    0,
+    0,
+    600,
+    525,
+    0,
+    -40,
+    CANVAS_WIDTH,
+    CANVAS_HEIGHT
+  );
+  //the drawImage method has 3 modes => 1 where it takes 3 , second where it takes 5 and third where it takes 9 arguments
+  //the first argument is the image , next 4 arguments are the "cut-out" part of the image : source x , source y , source width , source height
+  //the next 4 are destination parameters, where you want to place the cut out part on the canvas : x , y , width , height
+
   requestAnimationFrame(animate);
   //this requests the browser to call the animate function before the next repaint.
   //The animate function will continue to be called by the browser
