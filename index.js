@@ -18,7 +18,6 @@ const staggerFrame = 5;
 let currentPlayerState = 0;
 const dropDown = document.getElementById("animations");
 dropDown.addEventListener("change", (e) => {
-  console.log(e.target.value);
   currentPlayerState = Number(e.target.value);
 });
 
