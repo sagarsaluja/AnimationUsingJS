@@ -15,20 +15,32 @@ const CANVAS_HEIGHT = (canvas.height = 600);
 
 const playerImage = new Image();
 playerImage.src = "Assets/shadow_dog.png";
-let x = 0;
+
+//The sprite sheet has frames in it, and is divided into row and columns.
+//we need to navigate through each image in it. We can call each image one frame.
+//so width of one frame = length of sheet / number of frames it has
+//so height of one frame = height of sheet / number of frames it has
+
+const frameWidth = 575;
+const frameHeight = 523;
+let currentFrameX = 4;
+let currentFrameY = 4;
+
+// we will pass multiples of the frames to the drawImage method to animate these.
+
 const animate = () => {
   //this is an ANIMATION LOOP -> core concept!
   context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT); //builtin function => takes st and end coordinates and clears those
   context.drawImage(
     playerImage,
+    currentFrameX * frameWidth,
+    currentFrameY * frameHeight,
+    frameWidth,
+    frameHeight,
     0,
     0,
-    600,
-    525,
-    0,
-    -40,
-    CANVAS_WIDTH,
-    CANVAS_HEIGHT
+    frameWidth, //setting these to Canvas_width and canvas_Height will make the image stretched out!
+    frameHeight //better set these to frameWidth, frameHeight
   );
   //the drawImage method has 3 modes => 1 where it takes 3 , second where it takes 5 and third where it takes 9 arguments
   //the first argument is the image , next 4 arguments are the "cut-out" part of the image : source x , source y , source width , source height
